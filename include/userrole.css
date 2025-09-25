@@ -1,0 +1,169 @@
+:root {
+    --delsu-blue: #0072BC;
+    --delsu-light-blue: #67B4E7;
+    --delsu-dark: #003A5D;
+    --delsu-gray: #F0F2F5;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.navbar {
+    background: linear-gradient(to right, var(--delsu-blue), var(--delsu-light-blue));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    background-color: var(--delsu-dark);
+    color: white;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar-sticky {
+    position: relative;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.75rem 1rem;
+}
+
+.sidebar .nav-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    border: none;
+}
+
+.card-header {
+    background: linear-gradient(to right, var(--delsu-blue), var(--delsu-light-blue));
+    color: white;
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: 600;
+}
+
+.roles-table {
+    width: 100%;
+}
+
+.roles-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.roles-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.permission-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.permission-view {
+    background-color: #e3f2fd;
+    color: #0d47a1;
+}
+
+.permission-create {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+}
+
+.permission-edit {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.permission-delete {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+
+.btn-delsu {
+    background: linear-gradient(to right, var(--delsu-blue), var(--delsu-light-blue));
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.btn-delsu:hover {
+    background: linear-gradient(to right, #005a9c, #4a9adf);
+    color: white;
+}
+
+.btn-outline-delsu {
+    background-color: white;
+    color: var(--delsu-blue);
+    border: 2px solid var(--delsu-blue);
+    padding: 8px 15px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.btn-outline-delsu:hover {
+    background-color: #f0f0f0;
+}
+
+.modal-header {
+    background: linear-gradient(to right, var(--delsu-blue), var(--delsu-light-blue));
+    color: white;
+}
+
+.permission-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.permission-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.module-header {
+    background-color: #e9ecef;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        height: auto;
+    }
+
+    .roles-table {
+        display: block;
+        overflow-x: auto;
+    }
+}
