@@ -208,6 +208,37 @@
            color: #6c757d;
            margin: 0;
        }
+       /*  Toogle Button in session*/
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-active {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-inactive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .btn-action {
+            margin: 2px;
+        }
+        
+        .form-check-input:checked {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        
+        .form-check-input {
+            width: 3em;
+            height: 1.5em;
+        }
 
        @media (max-width: 768px) {
            #sidebar {

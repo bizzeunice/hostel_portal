@@ -22,24 +22,15 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['superadmin', 
    
 
     <!-- Sidebar -->
-    <?php include 'include/sidebar.php'; ?>
+    <?php include 'include/sidebar1.php'; ?>
 
     <!-- Main Content -->
     <div id="content">
         <div class="container-fluid">
-            <h1 class="mb-4">Admin Dashboard</h1>
+            <h1 class="mb-4">Warden Dashboard</h1>
 
             <!-- Dashboard Stats -->
             <div class="row">
-                <div class="col-md-3">
-                    <div class="dashboard-card">
-                        <div class="card-icon" style="background-color: rgba(58, 12, 163, 0.1); color: var(--primary);">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <div class="card-value">12</div>
-                        <div class="card-title">Total Hostels</div>
-                    </div>
-                </div>
                 <div class="col-md-3">
                     <div class="dashboard-card">
                         <div class="card-icon"
@@ -66,6 +57,15 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['superadmin', 
                         </div>
                         <div class="card-value">64</div>
                         <div class="card-title">Available Beds</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="dashboard-card">
+                        <div class="card-icon" style="background-color: rgba(167, 159, 40, 0.1); color: #d3a422ff;">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="card-value">64</div>
+                        <div class="card-title">Reserved Beds</div>
                     </div>
                 </div>
             </div>
@@ -109,33 +109,7 @@ if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['superadmin', 
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="dashboard-card">
-                        <h4><i class="fas fa-money-bill-wave me-2"></i> Payment Summary</h4>
-                        <p class="text-muted">Current payment status</p>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Paid:</span>
-                            <span class="text-success">₦2,840,000</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <span>Pending:</span>
-                            <span class="text-warning">₦320,000</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-4">
-                            <span>Failed:</span>
-                            <span class="text-danger">₦42,000</span>
-                        </div>
-
-                        <h5 class="mt-4">Quick Actions</h5>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-primary"><i class="fas fa-plus me-2"></i> Add New Hostel</button>
-                            <button class="btn btn-outline-primary"><i class="fas fa-file-export me-2"></i> Generate
-                                Report</button>
-                            <button class="btn btn-outline-secondary"><i class="fas fa-cog me-2"></i> System
-                                Settings</button>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELSU - Assign Warden to Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --delsu-blue: #0072BC;
+            --delsu-light-blue: #67B4E7;
+            --delsu-dark: #003A5D;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(to right, var(--delsu-blue), var(--delsu-light-blue));
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--delsu-blue), var(--delsu-light-blue));
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--delsu-blue);
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background: var(--delsu-dark);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--delsu-blue);
+            color: var(--delsu-blue);
+            font-weight: 600;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--delsu-blue);
+            color: white;
+        }
+        
+        .hostel-card {
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        
+        .hostel-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hostel-card.selected {
+            border: 3px solid var(--delsu-blue);
+        }
+        
+        .warden-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e9ecef;
+        }
+        
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .badge-assigned {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-unassigned {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .assignment-form {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .form-section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            color: var(--delsu-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--delsu-light-blue);
+        }
+        
+        .stats-card {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--delsu-blue);
+            margin-bottom: 5px;
+        }
+        
+        .stats-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .modal-header {
+            background: linear-gradient(to right, var(--delsu-blue), var(--delsu-light-blue));
+            color: white;
+        }
+        
+        .assignment-history-item {
+            border-left: 3px solid var(--delsu-blue);
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1><i class="fas fa-user-shield me-2"></i>Hostel Warden Assignment</h1>
+                    <p class="mb-0">Assign wardens to manage DELSU hostels and student accommodations</p>
+                </div>
+                <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addWardenModal">
+                    <i class="fas fa-user-plus me-2"></i>Add New Warden
+                </button>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <!-- Left Column - Hostel Selection -->
+            <div class="col-md-6">
+                
+
+                <!-- Current Assignment Details -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <i class="fas fa-info-circle me-2"></i>Current Assignment Details
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <img src="https://ui-avatars.com/api/?name=Dr+Sarah+Johnson&background=0072BC&color=fff" class="warden-avatar mb-3" alt="Warden">
+                            <h4>Dr. Sarah Johnson</h4>
+                            <p class="text-muted">Current Warden - Queen's Hall</p>
+                            <p><strong>Contact:</strong> sarah.j@delsu.edu.ng</p>
+                            <p><strong>Phone:</strong> +234 801 234 5678</p>
+                            <p><strong>Assigned Since:</strong> January 15, 2023</p>
+                        </div>
+                        <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#reassignModal">
+                            <i class="fas fa-sync-alt me-2"></i>Reassign Warden
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Warden Assignment -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-user-tie me-2"></i>Assign Warden to Queen's Hall
+                    </div>
+                    <div class="card-body">
+                        <div class="assignment-form">
+                            <div class="form-section">
+                                <h5 class="section-title">Select Warden</h5>
+                                <div class="mb-3">
+                                    <label class="form-label">Available Wardens</label>
+                                    <select class="form-select" id="wardenSelect">
+                                        <option value="">Select a warden...</option>
+                                        <option value="1">Dr. Sarah Johnson (Current)</option>
+                                        <option value="2">Prof. Michael Adebayo</option>
+                                        <option value="3">Dr. Grace Okon</option>
+                                        <option value="4">Mr. David Brown</option>
+                                        <option value="5">Dr. Fatima Bello</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Warden Preview -->
+                                <div id="wardenPreview" class="mt-4 p-3 border rounded" style="display: none;">
+                                    <div class="d-flex align-items-center">
+                                        <img src="" class="warden-avatar me-3" id="previewAvatar" alt="Warden">
+                                        <div>
+                                            <h6 id="previewName" class="mb-1"></h6>
+                                            <p class="text-muted mb-1" id="previewEmail"></p>
+                                            <p class="mb-0" id="previewPhone"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h5 class="section-title">Assignment Details</h5>
+                                <div class="mb-3">
+                                    <label for="assignmentDate" class="form-label">Assignment Date</label>
+                                    <input type="date" class="form-control" id="assignmentDate" value="2024-01-15">
+                                </div>
+                                
+                               
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Save Assignment
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-times me-2"></i>Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignment History -->
+   
+            </div>
+        </div>
+    </div>
+
+    <!-- Add New Warden Modal -->
+     
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hostel selection
+            const hostelCards = document.querySelectorAll('.hostel-card');
+            hostelCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    hostelCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    const hostelName = this.querySelector('h5').textContent;
+                    document.querySelector('.card-header i.fa-user-tie').parentElement.innerHTML = 
+                        `<i class="fas fa-user-tie me-2"></i>Assign Warden to ${hostelName}`;
+                });
+            });
+
+            // Warden selection preview
+            const wardenSelect = document.getElementById('wardenSelect');
+            const wardenPreview = document.getElementById('wardenPreview');
+            const previewAvatar = document.getElementById('previewAvatar');
+            const previewName = document.getElementById('previewName');
+            const previewEmail = document.getElementById('previewEmail');
+            const previewPhone = document.getElementById('previewPhone');
+
+            // Sample warden data
+            const wardenData = {
+                '1': {
+                    name: 'Dr. Sarah Johnson',
+                    email: 'sarah.j@delsu.edu.ng',
+                    phone: '+234 801 234 5678',
+                    avatar: 'https://ui-avatars.com/api/?name=Dr+Sarah+Johnson&background=0072BC&color=fff'
+                },
+                '2': {
+                    name: 'Prof. Michael Adebayo',
+                    email: 'm.adebayo@delsu.edu.ng',
+                    phone: '+234 802 345 6789',
+                    avatar: 'https://ui-avatars.com/api/?name=Prof+Michael+Adebayo&background=28a745&color=fff'
+                },
+                '3': {
+                    name: 'Dr. Grace Okon',
+                    email: 'g.okon@delsu.edu.ng',
+                    phone: '+234 803 456 7890',
+                    avatar: 'https://ui-avatars.com/api/?name=Dr+Grace+Okon&background=dc3545&color=fff'
+                },
+                '4': {
+                    name: 'Mr. David Brown',
+                    email: 'd.brown@delsu.edu.ng',
+                    phone: '+234 804 567 8901',
+                    avatar: 'https://ui-avatars.com/api/?name=Mr+David+Brown&background=ffc107&color=000'
+                },
+                '5': {
+                    name: 'Dr. Fatima Bello',
+                    email: 'f.bello@delsu.edu.ng',
+                    phone: '+234 805 678 9012',
+                    avatar: 'https://ui-avatars.com/api/?name=Dr+Fatima+Bello&background=6f42c1&color=fff'
+                }
+            };
+
+            wardenSelect.addEventListener('change', function() {
+                const selectedWarden = this.value;
+                
+                if (selectedWarden && wardenData[selectedWarden]) {
+                    const warden = wardenData[selectedWarden];
+                    previewAvatar.src = warden.avatar;
+                    previewName.textContent = warden.name;
+                    previewEmail.textContent = warden.email;
+                    previewPhone.textContent = warden.phone;
+                    wardenPreview.style.display = 'block';
+                } else {
+                    wardenPreview.style.display = 'none';
+                }
+            });
+
+            // Form submission
+            const saveButton = document.querySelector('.btn-primary');
+            saveButton.addEventListener('click', function() {
+                const selectedHostel = document.querySelector('.hostel-card.selected h5').textContent;
+                const selectedWarden = wardenSelect.options[wardenSelect.selectedIndex].text;
+                
+                if (!wardenSelect.value) {
+                    alert('Please select a warden to assign.');
+                    return;
+                }
+                
+                alert(`Successfully assigned ${selectedWarden} to ${selectedHostel}`);
+            });
+        });
+    </script>
+</body>
+</html>

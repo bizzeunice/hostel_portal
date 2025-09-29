@@ -1,13 +1,12 @@
 <?php
-$host = "localhost";   // database server
-$user = "root";        // database username
-$pass = "";            // database password
-$db   = "hostel_portal"; // database name
+$host = "localhost";
+$dbname = "hostel_portal";
+$user = "root";   // change if needed
+$pass = "";
 
-$conn = new mysqli($host, $user, $pass, $db);
+$conn = new mysqli($host, $user, $pass, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Database connection failed: " . $conn->connect_error);
 }
 ?>

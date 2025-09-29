@@ -1,44 +1,56 @@
+ <button id="sidebar-toggle">
+        <i class="fas fa-bars"></i>
+</button>
+<div id="sidebar">
+    <div class="sidebar-header d-flex">
+        <img src="./media/img/delsu-logo.png" alt="">
+        <!-- <h4><i class="fas fa-hotel me-2"></i> Hostel Manager</h4> -->
+        <span>
+            <p class="my">Hostel Manager</p>
+            <p class="h3"> <?php echo $_SESSION['username']; ?>!</p>
+        </span>
+    </div>
+
+    <div class="sidebar-menu">
+
+        <!-- Dashboard -->
+        <a href="dashboard.php" class="menu-item active">
+            <div class="menu-icon"><i class="fas fa-home"></i></div>
+            <div class="menu-text">Dashboard</div>
+        </a>
+        <div class="menu-category">Main</div>
+        <a href="createsession.php" class="menu-item">
+            <div class="menu-icon"><i class="fas fa-bed"></i></div>
+            <div class="menu-text">Manage Hostel</div>
+        </a>
 
 
-    <!-- Sidebar -->
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <div class="logo"><img src="./media/img/delsu-logo.png" alt="" srcset="" width="90px" height="80px"></div>
-            <h3>DELSU Hostel Portal</h3>
-        </div>
+        <!-- Hostel Management -->
         
-        <div class="sidebar-menu">
-            <ul>
-                 <li><a href="dashboard.php" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="createsession.php" class="active"><i class="fas fa-list"></i> Sessions</a></li>
-            <li><a href="" class="active"><i class="fas fa-users"></i> User & Roles</a></li>
-            <li><a href="campusmgt.php" class="active"><i class="fas fa-building"></i> Campuses</a></li>
-            <li class="has-submenu">
-                <a href="#" aria-expanded="false"><span><i class="fas fa-bed"></i> Hostels</span> <i
-                        class="fas fa-chevron-right caret"></i></a>
-                <ul class="submenu">
-                    <li><a href="createhostel.php">Rooms & Bedspaces</a></li>
-                    <li><a href="viewhostel.php"> Hostel Eligibility</a></li>
-                </ul>
-            </li>
-            <li class="has-submenu">
-                <a href="#" aria-expanded="false"><span><i class="fas fa-user"></i> Student</a>
-                <ul class="submenu">
-                    <li><a href="createhostel.php">Rooms & Bedspaces</a></li>
-                    <li><a href="viewhostel.php"> Hostel Eligibility</a></li>
-                </ul>
-            </li>
-            
-            <li><a href="#"><i class="fas fa-"></i> Bookings</a></li>
-            <li><a href="#"><i class="fas fa-wallet"></i>Payments</a></li>
-            <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
-            <li><a href="#"><i class="fas fa-question-circle"></i> History</a></li>
+
+        <!-- Eligibility Rules -->
+
+
+
+
+        <!-- System Settings -->
+
+    </div> 
+    <div class="sidebar-footer">
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown">
+                <img src="https://placehold.co/40x40" alt="Admin" width="32" height="32" class="rounded-circle me-2">
+                <p class="admin-name"> <?php echo $_SESSION['username']; ?>!</p>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt me-2"></i>  Logout </a></li>
             </ul>
         </div>
-    </nav>
-    <div id="sidebarOverlay" class="sidebar-overlay d-md-none"></div>
-
-
-
-
-   
+    </div>
+</div>

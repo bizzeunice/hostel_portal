@@ -1,0 +1,3 @@
+- [x] Modify index.php to allow login for superadmin, admin, and staff roles
+- [x] Modify dashboard.php to allow access for superadmin, admin, and staff roles, and update title
+- [ ] Test login functionality with different roles
